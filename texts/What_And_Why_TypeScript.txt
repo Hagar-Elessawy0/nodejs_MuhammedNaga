@@ -1,0 +1,16 @@
+What and Why TypeScript?!
+1. First of all, JavaScript + A Type System = TypeScript
+2. It's essentially JavaScript with some additional type-checking.
+3. Helps us to catch errors during Development mode.
+4. Doesn't provide any performance optimization.
+5. Static Typing: TypeScript is a statically typed language, meaning you can explicitly declare types for variables, function parameters, and return values. JavaScript, on the other hand, is dynamically typed, allowing variables to hold values of any type at runtime without explicit type annotations.
+6. Type Inference: TypeScript has type inference capabilities, which means that even if you don't explicitly declare types, the TypeScript compiler can often infer them based on the context. JavaScript, being dynamically typed, does not have this feature.
+7. Tooling and IDE Support: TypeScript has excellent tooling support, including features like code completion, refactoring, and static type checking. Popular code editors and IDEs provide enhanced TypeScript integration. JavaScript tooling has improved over time but is generally not as robust as TypeScript.
+8. Compatibility: TypeScript is a superset of JavaScript, which means that any valid JavaScript code is also valid TypeScript code. This allows developers to gradually introduce TypeScript into existing JavaScript projects without having to rewrite everything.
+9. Error Detection: With static typing, TypeScript can catch certain types of errors at compile time (before the code is executed), providing early detection and prevention of potential bugs. JavaScript, being dynamically typed, relies on runtime checks to identify errors.
+10. ECMAScript Compatibility: Both TypeScript and JavaScript are based on the ECMAScript specification. TypeScript supports the latest ECMAScript features, and you can choose the target ECMAScript version during compilation. JavaScript implementations may vary depending on the runtime environment or the version supported by the browser or Node.js.
+11. JavaScript didn't originally have classes: Classes were added with the introduction of
+ECMASCRIPT 6 (es6), a new and improved version of JavaScript (ECMASCRIPT 5 being the older version).
+12. Community and Ecosystem: JavaScript has a massive and mature ecosystem with a wide range of libraries, frameworks, and tools. TypeScript is gaining popularity and has its own growing ecosystem, with many popular libraries providing TypeScript typings for improved development experience.
+13. Transpilation: Once the type checking is complete, the TypeScript compiler transpile the TypeScript code into JavaScript code. The output is typically generated in one or more .js files.
+14. TypeScript Compiler: The TypeScript compiler (tsc) is a command-line tool or can be integrated into an IDE. It takes the TypeScript code as input and analyzes it, checking for type errors and ensuring syntactic correctness.
