@@ -1,0 +1,27 @@
+***** Var *****
+Scope         : Function-scoped. var declarations are confined to the function in which they are declared.
+Hoisting      : Variables declared with var are hoisted to the top of their scope. This means the declaration is processed before any code is executed, though the assignment stays in place.
+Redeclaration : Allowed within the same scope.
+Assignment    : The variable can be reassigned.
+Mutability    : The variable can be reassigned, and if it holds an object, the properties of that object can be changed.
+Adding to window object : The variable is added to the window object when declared in the global scope.
+
+-----------------------------------------------------------------------------
+
+***** Let *****
+Scope         : Block-scoped. let declarations are confined to the block {} in which they are declared.
+Hoisting      : Variables declared with let are hoisted, but not initialized. Accessing them before declaration results in a ReferenceError.
+Redeclaration : Not allowed within the same scope.
+Assignment    : The variable can be reassigned.
+Mutability    : The variable can be reassigned, and if it holds an object, the properties of that object can be changed.
+Adding to window object : Variables are not added to the window object when declared in the global scope.
+
+-----------------------------------------------------------------------------
+
+**** Const ****
+Scope         : Block-scoped. const declarations are confined to the block {} in which they are declared.
+Hoisting      : Variables declared with const are hoisted but not initialized. Accessing them before declaration results in a ReferenceError.
+Redeclaration : Not allowed within the same scope.
+Assignment    : Must be initialized at the time of declaration. Cannot be reassigned afterward.
+Mutability    : The variable cannot be reassigned, but if it holds an object, the properties of that object can be changed.
+Adding to window object : Variables are not added to the window object when declared in the global scope.
