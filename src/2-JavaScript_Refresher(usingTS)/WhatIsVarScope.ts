@@ -8,7 +8,7 @@ if(isLoggedIn) {
     // if scope
     var username2 = "Hagar";    
 }
-//console.log(username2);         // scope of username2 is global -  output : Hagar
+console.log(username2);         // scope of username2 is global -  output : Hagar
 
 function printUsername() {
     // function scope
