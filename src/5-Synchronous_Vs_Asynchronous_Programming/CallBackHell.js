@@ -22,6 +22,7 @@ function fetchUser(callback) {
     }, 3000 );
 }
 
+// callback hell
 fetchUser(() => {
     getTodoList_fix(() => {
         console.log( "Todo List:", todoList_fix );
