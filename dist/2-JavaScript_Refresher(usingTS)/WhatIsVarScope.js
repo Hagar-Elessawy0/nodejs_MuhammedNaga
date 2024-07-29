@@ -1,3 +1,4 @@
+"use strict";
 var username1;
 username1 = "codeawy";
 var isLoggedIn = true;
@@ -10,4 +11,3 @@ function printUsername() {
     var username3 = "Mohamed";
     console.log(username3);
 }
-//console.log(username3);

@@ -1,3 +1,4 @@
+"use strict";
 console.log(`From global scope: ${this}`);
 function printThis() {
     return this;

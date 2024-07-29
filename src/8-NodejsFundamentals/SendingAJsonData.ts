@@ -9,6 +9,7 @@ const server = http.createServer((req, res) => {
             {id: 1, title: 'First product'},
             {id: 2, title: 'Second product'},
             {id: 3, title: 'Third product'},
+            {id: 4, title: 'Fourth product'},
         ]
     }
     res.write(JSON.stringify(data));

@@ -1,3 +1,4 @@
+"use strict";
 var Direction;
 (function (Direction) {
     Direction[Direction["Up"] = 0] = "Up";

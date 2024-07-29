@@ -1,0 +1,15 @@
+"use strict";
+let number1 = 21;
+let number2 = 5;
+const sum = number1 + number2;
+console.log("Addition : " + sum);
+const sub1 = number1 - number2;
+console.log("Subtraction : " + sub1);
+const sub2 = number2 - number1;
+console.log("Subtraction : " + sub2);
+const mul = number1 * number2;
+console.log("Multiplication : " + mul);
+const div = number1 / number2;
+console.log("Division : " + div);
+const mod = number1 % number2;
+console.log("Modulus : " + mod);
