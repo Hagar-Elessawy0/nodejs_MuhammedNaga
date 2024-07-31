@@ -1,0 +1,14 @@
+{
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon src/8-NodejsFundamentals/SendingAJsonData.ts",
+    "start": "node dist/8-NodejsFundamentals/SendingAJsonData.js",
+    "build": "tsc -p src/8-NodejsFundamentals/SendingAJsonData.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.13",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}

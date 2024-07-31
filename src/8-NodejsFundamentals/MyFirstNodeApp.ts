@@ -1,5 +1,5 @@
 // * const http = require('http');   ==>  CommonJS Module (default)
-import http = require('http');  //* ===>  ES Module
+import * as http from 'http';  //* ===>  ES Module
 
 const server = 'My Local Server';
 export default server;      //! export default is used only once in a file
