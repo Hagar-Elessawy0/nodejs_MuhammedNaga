@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon src/8-NodejsFundamentals/SendingAJsonData.ts",
+    "dev": "nodemon src/9-FileSystemAndStreamsInNode/ReadAndDeleteFilesInADirectory.ts",
     "start": "node dist/8-NodejsFundamentals/SendingAJsonData.js",
     "build": "tsc -p src/8-NodejsFundamentals/SendingAJsonData.ts"
   },
