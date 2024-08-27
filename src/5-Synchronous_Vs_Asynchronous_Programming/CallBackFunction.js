@@ -2,6 +2,7 @@
 Heavy task : take a while
 
 CallBack Function : 
+- function that we pass as parameter
 - wait for heavy task to complete, we use it when task from next lines is dependent on / need to the result of heavy task
 - we can use it in synchronous code or asynchronous code scope
 
