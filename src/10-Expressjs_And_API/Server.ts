@@ -1,13 +1,13 @@
 /*
 - create express app
-- http methods (get, post, put/patch, delete)
-- endpoints : (localhost:5000/products) or (localhost:5000/products/1) etc
+- http methods (get, post, put, patch, delete)
 - create and handle routes
 - route params 
 - send response
 - fake data
 - query params + application for filtering
-- middleware
+- body params
+- use express.json() middleware
  */
 
 import express from "express";
@@ -85,11 +85,11 @@ app.get("/products/:id", (req, res) => {
 //* Create new product (POST request)
 app.post("/products", (req, res) => {
     
-    //console.log(req.body);        //? object - body of the request in JSON format 
+    console.log(req.body);        //? object - body of the request in JSON format 
 
     //! we don't make validation here but we must do it first in controller
-    const newProduct = req.body;
-    fakeData.push({id : fakeData.length + 1, ...newProduct})
+    //const newProduct = req.body;
+    //fakeData.push({id : fakeData.length + 1, ...newProduct})
     
     //! callback function must send response, it isn't needed to return anything
     // return {message : "Product has been created"};     // undefined
@@ -110,6 +110,7 @@ app.patch("/products/:id", (req, res) => {
     }
 
     //! Second validation of updated data before updating but we didn't make validation here
+    //* body params
     const updatedData = req.body;
 
     //? Then update the data
@@ -145,7 +146,7 @@ app.delete("/products/:id", (req, res) => {
 
 })
 
-const PORT : number = 5000;
+const PORT : number = 8005;
 app.listen(PORT,() => {
     console.log(`Server running on http://localhost:${PORT}`);
 })
