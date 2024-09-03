@@ -8,11 +8,11 @@
 - query params + application for filtering
 - body params
 - use express.json() middleware
- */
+*/
 
 import express from "express";
 import { generateFakeProduct } from "./Utils/FakeData";
-import { IPruduct } from "./Interfaces";
+import { IProduct } from "./Interfaces";
 
 const app = express();
 
@@ -33,7 +33,7 @@ let fakeData = generateFakeProduct();
 //* get all products
 app.get("/products", (req, res) => {
 
-    //* query params: filter data by keyof IPruduct
+    //* query params: filter data by keyof IProduct
     // const queryParams = req.query;
     // console.log(queryParams);     // object
 
@@ -49,7 +49,7 @@ app.get("/products", (req, res) => {
             const filteredProduct = {};
             propertiesToFilter.forEach(property => {
                 if(product.hasOwnProperty(property)) {
-                    filteredProduct[property] = product[property as keyof IPruduct];
+                    filteredProduct[property] = product[property as keyof IProduct];
                 }
             });
             return {id : product.id, ...filteredProduct};    //! Must return ID always
@@ -88,8 +88,8 @@ app.post("/products", (req, res) => {
     console.log(req.body);        //? object - body of the request in JSON format 
 
     //! we don't make validation here but we must do it first in controller
-    //const newProduct = req.body;
-    //fakeData.push({id : fakeData.length + 1, ...newProduct})
+    const newProduct = req.body;
+    fakeData.push({id : fakeData.length + 1, ...newProduct})
     
     //! callback function must send response, it isn't needed to return anything
     // return {message : "Product has been created"};     // undefined
@@ -120,6 +120,7 @@ app.patch("/products/:id", (req, res) => {
     res.send("Product has been updated successfully");
     
 })
+//! same as post but when we use post must send all properties in the body not only property we want to update or else rest of the properties will be deleted 
 
 ////////////////////////////////////////////////////////////////////////////////
 //* Delete product (Delete request)
