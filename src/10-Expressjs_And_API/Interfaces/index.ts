@@ -2,11 +2,13 @@ export interface IProduct {
     id: number,
     title: string,
     price: number,
-    description: string
+    description: string,
+    imageUrl?: string
 }
 
 export interface IProductBody {
     title: string,
     price: number,
-    description: string
+    description: string,
+    imageUrl?: string
 }
