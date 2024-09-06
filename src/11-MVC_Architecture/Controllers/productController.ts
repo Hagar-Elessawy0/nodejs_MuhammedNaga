@@ -1,11 +1,16 @@
 import ProductsServices  from "../Services/productsServices";
 import { IProductBody} from "../../10-Expressjs_And_API/Interfaces";
-import { Request, response } from "express";
-import { Response } from "express";
+import { Request, Response } from "express";
 
 class ProductController {
 
-    constructor(private productsService : ProductsServices) {}
+    constructor(private productsService : ProductsServices) {
+        this.getProducts = this.getProducts.bind(this);
+        this.getProductByID = this.getProductByID.bind(this);
+        this.createNewProduct = this.createNewProduct.bind(this);
+        this.updateProduct = this.updateProduct.bind(this);
+        this.deleteProduct = this.deleteProduct.bind(this);
+    }
 
     getProducts(req :Request , res :Response){
         const filterQuery = req.query.filter as string;
