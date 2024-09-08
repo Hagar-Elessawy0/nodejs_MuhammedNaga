@@ -13,6 +13,7 @@ class ProductController {
     }
 
     getProducts(req :Request , res :Response){
+        //throw new Error("Something went wrong");                //? err.message   -   test middleware error
         const filterQuery = req.query.filter as string;
         filterQuery ? res.send(this.productsService.filterByQuery(filterQuery)) : res.send(this.productsService.findAll());
     }

@@ -9,18 +9,21 @@ class ProductViewController {
     }
 
     renderProductsList(req :Request, res :Response) {
+        //throw new Error("Something went wrong");                //? err.message   -   test middleware error
         res.render('products',
             {
-                PageTitle : "Products List",
+                pageTitle : "My Store - Products Page",
                 description : "This is awesome store",
                 products : this.productsService.findAll()
             })
     }
 
     renderProductPage(req :Request, res :Response) {
+        const product = this.productsService.getProductByID(+req.params.id);
         res.render('product', 
             {
-                product : this.productsService.getProductByID(+req.params.id),
+                pageTitle: `My Store - ${product?.title}`,
+                product,
             }
         )
     }

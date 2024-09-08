@@ -1,12 +1,16 @@
 import express from "express";
-import ProductController from "./Controllers/productController";
 import ProductsServices  from "./Services/productsServices";
 import ProductsViewController from "./Controllers/productsViewController";
 import { generateFakeProduct } from "../10-Expressjs_And_API/Utils/FakeData";
 import path from "path";
 import productsRouter from "./Routes/products";
+import ErrorMiddleware from "./Middlewares/Error";
+import NotFoundMiddleware from "./Middlewares/NotFound";
+import dotenv from "dotenv";
 
 const app = express();
+
+dotenv.config();
 
 //* setting up view engine and directory
 app.set("view engine", "pug");
@@ -18,7 +22,6 @@ app.use(express.static(path.join(__dirname, 'Public')));
 app.use(express.json());  
 let fakeData = generateFakeProduct();
 const productsServices = new ProductsServices(fakeData);
-const productsController = new ProductController(productsServices);
 const productsViewController = new ProductsViewController(productsServices);
 
 //* Product Routes
@@ -30,9 +33,13 @@ app.get('/products',productsViewController.renderProductsList);
 
 app.get("/products/:id",productsViewController.renderProductPage);
 
-app.get('/', (req, res) => res.render('Home'));
+app.get('/', (req, res) => res.render('Home', { pageTitle: "My Store - Home" }));
 
-app.get('*', (req, res) => res.render('notFound'));             // any other route
+//* middlewares
+//app.get('*', (req, res) => res.render('notFound', { pageTitle: "My Store - Page Not Found" }));             // any other route
+app.use(NotFoundMiddleware.handle);
 
-const PORT : number = 8006;
+app.use(ErrorMiddleware.handle);
+
+const PORT : number = 8007;
 app.listen(PORT,() => {console.log(`Server running on http://localhost:${PORT}`);});
