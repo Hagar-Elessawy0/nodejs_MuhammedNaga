@@ -7,10 +7,31 @@ import productsRouter from "./Routes/products";
 import ErrorMiddleware from "./Middlewares/Error";
 import NotFoundMiddleware from "./Middlewares/NotFound";
 import dotenv from "dotenv";
+import helmet from "helmet";
+import morgan from "morgan";
+import rateLimit from "express-rate-limit";
+import compression from "compression";
 
 const app = express();
-
 dotenv.config();
+app.use(compression());
+app.use(morgan('dev'));
+
+//* setting up security
+app.use(helmet({
+    contentSecurityPolicy: false,       //? disable CSP to show the images on the browser (don't use it in production mode)
+    xFrameOptions: {
+        action: "deny"                  //? disable xFrameOptions to not allow iframe in another website
+    }
+}));
+
+const rateLimitOptions = {
+    windowMs: 15 * 60 * 1000,                                           //? 15 minutes 
+    limit: 100,                                                         //? limit each IP to 100 requests per windowMs
+    message: "Too many requests from this IP, please try again later!"  //? message when limit is reached - status code 429
+}
+
+app.use(rateLimit(rateLimitOptions));
 
 //* setting up view engine and directory
 app.set("view engine", "pug");
@@ -35,8 +56,9 @@ app.get("/products/:id",productsViewController.renderProductPage);
 
 app.get('/', (req, res) => res.render('Home', { pageTitle: "My Store - Home" }));
 
+//app.get('*', (req, res) => res.render('notFound', { pageTitle: "My Store - Page Not Found" }));     // any other route //? we replace it with middleware
+
 //* middlewares
-//app.get('*', (req, res) => res.render('notFound', { pageTitle: "My Store - Page Not Found" }));             // any other route
 app.use(NotFoundMiddleware.handle);
 
 app.use(ErrorMiddleware.handle);
