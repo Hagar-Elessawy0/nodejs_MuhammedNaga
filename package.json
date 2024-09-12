@@ -1,10 +1,10 @@
 {
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon src/11-MVC_Architecture/Server.ts",
+    "dev": "nodemon src/14-PostgreSQL_Database_15-MVC-Database_Model(M)/Server.ts",
     "start": "node dist/8-NodejsFundamentals/SendingAJsonData.js",
     "build": "tsc -p src/8-NodejsFundamentals/SendingAJsonData.ts",
-    "build:css": "postcss src/11-MVC_Architecture/Public/Styles/tailwind.css -o src/11-MVC_Architecture/Public/Styles/global.css"
+    "build:css": "postcss src/14-PostgreSQL_Database_15-MVC-Database_Model(M)/Public/Styles/tailwind.css -o src/14-PostgreSQL_Database_15-MVC-Database_Model(M)/Public/Styles/global.css"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -12,6 +12,7 @@
     "@types/express": "^4.17.21",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.14.13",
+    "@types/pg": "^8.11.9",
     "autoprefixer": "^10.4.20",
     "nodemon": "^3.1.4",
     "postcss": "^8.4.45",
@@ -27,6 +28,7 @@
     "express-rate-limit": "^7.4.0",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
+    "pg": "^8.12.0",
     "pug": "^3.0.3"
   }
 }
