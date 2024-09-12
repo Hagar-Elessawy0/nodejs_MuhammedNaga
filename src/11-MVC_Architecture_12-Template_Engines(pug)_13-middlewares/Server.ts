@@ -6,14 +6,12 @@ import path from "path";
 import productsRouter from "./Routes/products";
 import ErrorMiddleware from "./Middlewares/Error";
 import NotFoundMiddleware from "./Middlewares/NotFound";
-import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import compression from "compression";
 
 const app = express();
-dotenv.config();
 app.use(compression());
 app.use(morgan('dev'));
 
@@ -48,6 +46,18 @@ const productsViewController = new ProductsViewController(productsServices);
 //* Product Routes
 //? API
 app.use("/api/products", productsRouter);
+
+// app.get('/db/products', async (req, res) => {       //? async function because it will take time to execute it so we use it to not freeze the server
+//     try {
+//         const products = await pool.query('SELECT * FROM products;');
+//         res.json({                                  //? convert data to application/json
+//             products : products.rows,
+//             length : products.rowCount
+//         });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// })
 
 //? Rendering
 app.get('/products',productsViewController.renderProductsList);
