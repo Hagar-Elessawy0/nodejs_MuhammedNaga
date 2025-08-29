@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { IProduct } from '../interfaces/products';
+import { Injectable } from "@nestjs/common";
+import { IProduct } from "../interfaces/products";
+import { CreateProductDto } from "./dto/create-product.dto";
+import { UpdateProductDto } from "./dto/update-product.dto";
 
 //* -> nest generate service products
 //* Providers are used to encapsulate business logic and can be injected into controllers or other providers
@@ -11,33 +13,28 @@ import { IProduct } from '../interfaces/products';
 @Injectable()
 export class ProductsService {
     private products: IProduct[] = [
-        { id: 1, title: 'First Product' },
-        { id: 2, title: 'Second Product' },
-        { id: 3, title: 'Third Product' },
+        { id: 1, title: "First Product" },
+        { id: 2, title: "Second Product" },
+        { id: 3, title: "Third Product" },
     ];
 
     getProducts() {
         return this.products;
     }
 
-    getProductById(id: string) {
-        const product = this.products.find((p) => p.id === +id);
+    getProductById(id: number) {
+        const product = this.products.find((p) => p.id === id);
         return product || { message: `Product with id ${id} not found` };
     }
 
-    createProduct(body: { title?: string }) {
-        this.products.push({
-            id: this.products.length + 1,
-            title: body.title || 'New Product',
-        });
-        return {
-            message: 'Create Product',
-            product: this.products[this.products.length - 1],
-        };
+    createProduct(product: CreateProductDto) {
+        const newProduct = { id: this.products.length + 1, ...product };
+        this.products.push(newProduct);
+        return { message: "Create Product", product: newProduct };
     }
 
-    deleteProduct(id: string) {
-        const productIndex = this.products.findIndex((p) => p.id === +id);
+    deleteProduct(id: number) {
+        const productIndex = this.products.findIndex((p) => p.id === id);
         if (productIndex > -1) {
             this.products.splice(productIndex, 1);
             return { message: `Product with id ${id} deleted` };
@@ -45,11 +42,13 @@ export class ProductsService {
         return { message: `Product with id ${id} not found` };
     }
 
-    updateProduct(id: string, body: { title?: string }) {
-        const productIndex = this.products.findIndex((p) => p.id === +id);
+    updateProduct(id: number, edits: UpdateProductDto) {
+        const productIndex = this.products.findIndex((p) => p.id === id);
         if (productIndex > -1) {
-            this.products[productIndex].title =
-                body.title || this.products[productIndex].title;
+            this.products[productIndex] = {
+                ...this.products[productIndex],
+                ...edits,
+            };
 
             return {
                 message: `Product with id ${id} updated`,
