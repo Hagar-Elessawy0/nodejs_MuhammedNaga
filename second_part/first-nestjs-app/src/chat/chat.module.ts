@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { MessagesModule } from '../messages/messages.module';
+import { Module } from "@nestjs/common";
+import { MessagesModule } from "../messages/messages.module";
 
 @Module({
     imports: [MessagesModule], //* Importing MessagesModule (branching module from chatModule) to use its features in ChatModule

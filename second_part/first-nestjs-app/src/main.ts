@@ -10,7 +10,7 @@ async function bootstrap() {
     app.useGlobalPipes(
         new ValidationPipe({
             whitelist: true, //? Strip properties that do not have any decorators
-        }),
+        })
     );
 
     await app.listen(5001);

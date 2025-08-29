@@ -2,15 +2,7 @@
 //* DTO is used to define the shape of the data that is sent in requests and responses
 //* DTOs are used to ensure that the data sent over the network is valid and conforms
 import { Type } from "class-transformer";
-import {
-    IsNotEmptyObject,
-    IsNotEmpty,
-    IsString,
-    IsInt,
-    Length,
-    MaxLength,
-    ValidateNested,
-} from "class-validator";
+import { IsNotEmptyObject, IsNotEmpty, IsString, IsInt, Length, MaxLength, ValidateNested } from "class-validator";
 
 //* class-validator is a library that allows us to use decorators to validate the data in our DTOs
 //* when using any validation decorators, it will check the data that is sent in the request also

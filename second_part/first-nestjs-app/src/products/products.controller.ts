@@ -1,13 +1,4 @@
-import {
-    Controller,
-    Get,
-    Param,
-    Post,
-    Body,
-    Delete,
-    Put,
-    ParseIntPipe,
-} from "@nestjs/common";
+import { Controller, Get, Param, Post, Body, Delete, Put, ParseIntPipe } from "@nestjs/common";
 import { ProductsService } from "./products.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
@@ -55,10 +46,7 @@ export class ProductsController {
     }
 
     @Put(":id")
-    updateProduct(
-        @Param("id", ParseIntPipe) id: number,
-        @Body() updateProductDto: UpdateProductDto,
-    ) {
+    updateProduct(@Param("id", ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto) {
         return this.productsService.updateProduct(id, updateProductDto);
     }
 }
