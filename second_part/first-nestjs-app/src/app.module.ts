@@ -1,8 +1,9 @@
-import { Module } from "@nestjs/common";
+import { Module, NestModule, MiddlewareConsumer } from "@nestjs/common";
 import { UsersModule } from "./users/users.module";
 import { ProductsModule } from "./products/products.module";
 import { ChatModule } from "./chat/chat.module";
-import { PostesModule } from "./postes/postes.module";
+import { PostsModule } from "./postes/posts.module";
+import { AuthMiddleware } from "./middleware/auth/auth.middleware";
 
 //* This file is the root module of your NestJS application
 //* You can import other modules, controllers, and providers here
@@ -14,8 +15,14 @@ import { PostesModule } from "./postes/postes.module";
 //? Decorator that marks this class as a NestJS module
 @Module({
     controllers: [], //? Add your controllers here - allways an array
-    imports: [UsersModule, ProductsModule, ChatModule, PostesModule], //? Import other modules (Non-branching models) here - allways an array
+    imports: [UsersModule, ProductsModule, ChatModule, PostsModule], //? Import other modules (Non-branching models) here - allways an array
 })
 
 //? A normal class that is decorated with @Module to define the module"s metadata
-export class AppModule {}
+export class AppModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer.apply(AuthMiddleware).forRoutes("*"); //? Apply AuthMiddleware to all routes in the application
+    }
+}
+
+
