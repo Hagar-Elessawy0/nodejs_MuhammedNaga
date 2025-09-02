@@ -1,11 +1,19 @@
 import { HttpStatus, Injectable, NestMiddleware } from "@nestjs/common";
+import jwt from "jsonwebtoken";
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
     use(req: any, res: any, next: () => void) {
-        if (!req.headers.authorization) {
-            return res.status(HttpStatus.UNAUTHORIZED).json({ message: "Unauthorized" });
+        // if (!req.headers.authorization) {
+        //     return res.status(HttpStatus.UNAUTHORIZED).json({ message: "Unauthorized" });
+        // }
+
+        const token = req.headers["authorization"]?.split(" ")[1]; //? use ? to avoid error if authorization header is not present
+        if (!token) {
+            return res.status(HttpStatus.UNAUTHORIZED).json({ message: "Invalid token" });
         }
+
+        req["user"] = "Hagora";
         next();
     }
 }
