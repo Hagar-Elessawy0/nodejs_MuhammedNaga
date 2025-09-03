@@ -10,6 +10,6 @@ export class AuthGuard implements CanActivate {
 
         const request = context.switchToHttp().getRequest();
 
-        return !!request.user;
+        return !!request.user; //? If user is present in request, return true, else false
     }
 }

@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, NestModule, Module, RequestMethod } from "@nestjs/common";
 import { PostsService } from "./posts.service";
 import { PostsController } from "./posts.controller";
-import { PostsMiddleware } from "src/middleware/posts/posts.middleware";
+import { PostsMiddleware } from "src/middlewares/posts/posts.middleware";
 
 @Module({
     controllers: [PostsController],

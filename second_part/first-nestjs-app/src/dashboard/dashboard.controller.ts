@@ -2,9 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from "@n
 import { DashboardService } from "./dashboard.service";
 import { CreateDashboardDto } from "./dto/create-dashboard.dto";
 import { UpdateDashboardDto } from "./dto/update-dashboard.dto";
-import { AuthGuard } from "../auth/auth.guard";
+import { AuthGuard } from "../guards/auth/auth.guard";
+import { RolesGuard } from "src/guards/auth/roles/roles.guard";
+import { Roles } from "src/decorators/roles/roles.decorator";
+import { SystemRoles } from "src/guards/auth/roles/roles.enum";
 
 @Controller("dashboard")
+@UseGuards(RolesGuard, AuthGuard)
 export class DashboardController {
     constructor(private readonly dashboardService: DashboardService) {}
 
@@ -14,6 +18,7 @@ export class DashboardController {
     }
 
     @Get()
+    @Roles(SystemRoles.ADMIN, SystemRoles.MANAGER) //* Roles that can access this route
     //@UseGuards(AuthGuard)
     findAll() {
         return this.dashboardService.findAll();

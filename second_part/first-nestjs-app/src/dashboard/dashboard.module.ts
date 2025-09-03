@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from "@nestjs/common";
 import { DashboardService } from "./dashboard.service";
 import { DashboardController } from "./dashboard.controller";
-import { AuthMiddleware } from "src/middleware/auth/auth.middleware";
+import { AuthMiddleware } from "src/middlewares/auth/auth.middleware";
 
 @Module({
     controllers: [DashboardController],

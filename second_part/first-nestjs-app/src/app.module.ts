@@ -3,9 +3,10 @@ import { UsersModule } from "./users/users.module";
 import { ProductsModule } from "./products/products.module";
 import { ChatModule } from "./chat/chat.module";
 import { PostsModule } from "./postes/posts.module";
-import { AuthMiddleware } from "./middleware/auth/auth.middleware";
+import { AuthMiddleware } from "./middlewares/auth/auth.middleware";
 import { DashboardModule } from "./dashboard/dashboard.module";
 import { RequestMethod } from "@nestjs/common/enums/request-method.enum";
+import { ConfigModule } from "@nestjs/config";
 
 //* This file is the root module of your NestJS application
 //* You can import other modules, controllers, and providers here
@@ -17,7 +18,7 @@ import { RequestMethod } from "@nestjs/common/enums/request-method.enum";
 //? Decorator that marks this class as a NestJS module
 @Module({
     controllers: [], //? Add your controllers here - allways an array
-    imports: [UsersModule, ProductsModule, ChatModule, PostsModule, DashboardModule], //? Import other modules (Non-branching models) here - allways an array
+    imports: [UsersModule, ProductsModule, ChatModule, PostsModule, DashboardModule, ConfigModule.forRoot()], //? Import other modules (Non-branching models) here - allways an array
 })
 
 //? A normal class that is decorated with @Module to define the module"s metadata
