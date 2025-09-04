@@ -1,7 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import { HttpStatus, Injectable } from "@nestjs/common";
 import { IProduct } from "../interfaces/products";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
+import { CustomException } from "src/exceptions/customException";
 
 //* -> nest generate service products
 //* Providers are used to encapsulate business logic and can be injected into controllers or other providers
@@ -28,6 +29,9 @@ export class ProductsService {
     }
 
     createProduct(product: CreateProductDto) {
+        if (product.price >= 1000) {
+            throw new CustomException("Price too high", HttpStatus.BAD_REQUEST);
+        }
         const newProduct = { id: this.products.length + 1, ...product };
         this.products.push(newProduct);
         return { message: "Create Product", product: newProduct };

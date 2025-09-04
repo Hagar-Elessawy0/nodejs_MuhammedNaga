@@ -32,6 +32,9 @@ export class CreateProductDto {
     @MaxLength(200)
     description: string;
 
+    @IsInt()
+    price: number;
+
     //* validate nested object
     @ValidateNested()
     @IsNotEmptyObject()

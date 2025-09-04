@@ -10,7 +10,7 @@ export class AuthMiddleware implements NestMiddleware {
 
         const token = req.headers["authorization"]?.split(" ")[1]; //? use ? to avoid error if authorization header is not present
         if (!token) {
-            return res.status(HttpStatus.BAD_REQUEST).json({ message: "Bad request" });
+            return res.status(HttpStatus.BAD_REQUEST).json({ message: "Bad request - token not found" });
         }
 
         // const decoded = jwt.verify(token, process.env.JWT_SECRET!);

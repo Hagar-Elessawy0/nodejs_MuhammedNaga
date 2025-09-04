@@ -2,6 +2,7 @@ import { Controller, Get, Param, Post, Body, Delete, Put, ParseIntPipe } from "@
 import { ProductsService } from "./products.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
+import { UppercasePipe } from "src/pipes/uppercase/uppercase.pipe";
 
 //* -> nest generate controller products
 //* @Get Decorator to define a route handler(method below) for GET requests
@@ -36,7 +37,7 @@ export class ProductsController {
     }
 
     @Post()
-    createProduct(@Body() createProductDto: CreateProductDto) {
+    createProduct(@Body(UppercasePipe) createProductDto: CreateProductDto) {
         return this.productsService.createProduct(createProductDto);
     }
 
